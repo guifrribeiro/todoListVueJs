@@ -13,7 +13,7 @@
                 <novo-todo @novaTarefa="adicionarTarefa"></novo-todo>
             </div>
             <div class="content">
-                <todo-list></todo-list>
+                <todo-list :tarefas="tarefas" @check="checkTarefa"></todo-list>
             </div>
         </div>
     </div>
@@ -46,6 +46,9 @@ export default {
         adicionarTarefa(tarefa) {
             let nova_tarefa = {'description': tarefa, 'checked': false}
             this.tarefas.push(nova_tarefa)
+        },
+        checkTarefa(index) {
+            this.tarefas[index]['checked'] = !this.tarefas[index]['checked']
         }
     }
 }
